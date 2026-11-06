@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#81D8D0" />
+  <title>НОЧЬ ЗА СКОЛЬКО? 🌙</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Onest:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>КАЛИНИНГРАД • 14 НОЯБРЯ • ЦЕНЫ С АВИТО •&nbsp;</span><span>КАЛИНИНГРАД • 14 НОЯБРЯ • ЦЕНЫ С АВИТО •&nbsp;</span><span>КАЛИНИНГРАД • 14 НОЯБРЯ • ЦЕНЫ С АВИТО •&nbsp;</span>
+    </div>
+  </div>
+
+  <main class="game">
+    <header class="topbar">
+      <h1 class="logo">НОЧЬ ЗА СКОЛЬКО<span class="ribbon">?</span></h1>
+      <div class="hud">
+        <span class="hud__chip" id="hud-round">Раунд 1/10</span>
+        <span class="hud__chip" id="hud-score">Аура 0</span>
+      </div>
+    </header>
+
+    <!-- Экран раунда -->
+    <section class="screen screen--round" id="screen-round">
+      <article class="card" id="card">
+        <div class="carousel" id="carousel">
+          <div class="carousel__track" id="carousel-track"></div>
+          <div class="carousel__dots" id="carousel-dots"></div>
+        </div>
+        <div class="card__body">
+          <h2 class="card__title" id="card-title"></h2>
+          <div class="badges" id="card-badges"></div>
+          <ul class="facts">
+            <li class="fact fact--area" id="fact-area">—</li>
+            <li class="fact fact--beds" id="fact-beds">—</li>
+            <li class="fact fact--rating" id="fact-rating">—</li>
+            <li class="fact fact--reviews" id="fact-reviews">—</li>
+          </ul>
+          <p class="street street--hidden" id="street">📍 <span id="street-text"></span></p>
+        </div>
+        <div class="sticker sticker--superhost" id="sticker-superhost" hidden>⭐ СУПЕРХОЗЯИН</div>
+      </article>
+
+      <div class="panel panel--guess">
+        <label class="guess__label" for="price-slider">
+          Твоя цена за ночь: <b class="guess__value" id="price-value">—</b>
+        </label>
+        <input type="range" id="price-slider" min="1000" max="5000" step="50" />
+        <div class="guess__scale"><span>1 000</span><span>5 000</span></div>
+        <button class="btn btn--primary" id="btn-lock">ЗАЛОЧИТЬ 🔒</button>
+      </div>
+    </section>
+
+    <!-- Результат раунда -->
+    <section class="screen screen--result" id="screen-result" hidden>
+      <article class="card card--result" id="result-card">
+        <div class="result__badge" id="result-badge"></div>
+        <p class="result__reaction" id="result-reaction"></p>
+        <div class="result__price">
+          <span class="result__price-label">Реальная цена</span>
+          <span class="result__price-num" id="result-price">0 ₽</span>
+        </div>
+        <p class="result__diff" id="result-diff"></p>
+        <p class="result__points">+<span id="result-points">0</span> ауры</p>
+        <p class="result__street" id="result-street"></p>
+        <a class="result__link" id="result-link" target="_blank" rel="noopener noreferrer">Открыть на Авито ↗</a>
+      </article>
+      <button class="btn btn--primary" id="btn-next">Дальше →</button>
+    </section>
+
+    <!-- Финал -->
+    <section class="screen screen--final" id="screen-final" hidden>
+      <article class="card card--final">
+        <div class="ribbon-line" aria-hidden="true"></div>
+        <p class="final__kicker">ИТОГОВЫЙ ЗАБЕГ</p>
+        <p class="final__score" id="final-score">0</p>
+        <p class="final__aura">ауры</p>
+        <div class="final__rank" id="final-rank"></div>
+        <p class="final__record" id="final-record"></p>
+        <div class="final__buttons">
+          <button class="btn btn--primary" id="btn-restart">Ещё раз 🔁</button>
+          <button class="btn btn--secondary" id="btn-share">Поделиться 📣</button>
+        </div>
+      </article>
+    </section>
+
+    <footer class="foot">Данные: Авито, учебный проект</footer>
+  </main>
+
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
