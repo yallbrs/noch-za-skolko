@@ -67,13 +67,17 @@
 
   /* ---------- Карусель ---------- */
   function buildCarousel(photos) {
-    const track = $("carousel-track");
+    // свежие ноды без старых слушателей
+    const oldTrack = $("carousel-track");
+    const track = oldTrack.cloneNode(false);
+    oldTrack.replaceWith(track);
     const dots = $("carousel-dots");
-    track.innerHTML = "";
     dots.innerHTML = "";
     const list = photos.length ? photos : [null];
 
     list.forEach((src, i) => {
+      const slide = document.createElement("div");
+      slide.className = "carousel__slide";
       if (src) {
         const img = document.createElement("img");
         img.src = src;
@@ -81,24 +85,15 @@
         img.loading = i === 0 ? "eager" : "lazy";
         img.referrerPolicy = "no-referrer";
         img.addEventListener("error", () => {
-          const ph = document.createElement("div");
-          ph.className = "carousel__track";
-          ph.style.display = "flex";
-          ph.style.alignItems = "center";
-          ph.style.justifyContent = "center";
-          ph.style.flex = "0 0 100%";
-          ph.style.scrollSnapAlign = "start";
-          ph.style.fontSize = "44px";
+          const ph = document.createElement("span");
           ph.textContent = "🏠";
           img.replaceWith(ph);
         });
-        track.appendChild(img);
+        slide.appendChild(img);
       } else {
-        const ph = document.createElement("div");
-        ph.style.cssText = "flex:0 0 100%;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;font-size:44px;";
-        ph.textContent = "🏠";
-        track.appendChild(ph);
+        slide.textContent = "🏠";
       }
+      track.appendChild(slide);
 
       const dot = document.createElement("span");
       dot.className = "carousel__dot" + (i === 0 ? " is-active" : "");

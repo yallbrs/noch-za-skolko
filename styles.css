@@ -196,19 +196,22 @@ body {
   background: linear-gradient(160deg, var(--accent), var(--bg));
 }
 .carousel__track::-webkit-scrollbar { display: none; }
-.carousel__track img {
+.carousel__slide {
+  flex: 0 0 100%;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  background: linear-gradient(160deg, var(--accent), var(--bg));
-}
-.carousel__track img.is-broken {
+  scroll-snap-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 44px;
+  background: linear-gradient(160deg, var(--accent), var(--bg));
+  font-size: 48px;
+}
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .carousel__dots {
   position: absolute;
